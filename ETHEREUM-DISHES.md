@@ -63,5 +63,6 @@ Random knowledge about Ethereum and Solidity
 #### SOLIDITY OPTIMIZER
 15. The Solidity optimizer, when used, affects the deployed code and gas cost to run the code. 
 16. The number of runs (--optimizer runs) specifies roughly how often each opcode of the deployed code will be executed across the lifetime of the contract. This is a trade-off between code size (larger code size means a larger deployment cost) and code execution (more or fewer opcodes affect execution cost, so it's a trade-off between deployment cost and execution cost).
-17. A "runs" parameter of "1" will be interpreted by the optimizer as the code being called just once after deployment, resulting in shorter code for cheaper deployment but with higher execution cost. A larger "runs" parameter will result in longer deployed code but more gas-efficient code for future execution (the opposite of the first statement). Simply put, a larger "runs" parameter optimizes for execution cost and not deployment cost, while a smaller "runs" parameter optimizes for deployment cost and not execution cost.
-18. The maximum value for the "runs" parameter is 2**32-1.
+17. A "runs" parameter of "1" will be interpreted by the optimizer as the code being called just once after deployment, resulting in shorter code for cheaper deployment but with higher execution cost. 
+18. A larger "runs" parameter will result in longer deployed code but more gas-efficient code for future execution (the opposite of the first statement). Simply put, a larger "runs" parameter optimizes for execution cost and not deployment cost, while a smaller "runs" parameter optimizes for deployment cost and not execution cost.
+19. The maximum value for the "runs" parameter is 2**32-1.
