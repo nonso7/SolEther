@@ -1,6 +1,6 @@
 # Ethereum Dishes
 
-Ethereum Dishes is a reference list of points about various topics related to blockchain and solidity. It is intended to be a helpful resource for those who are interested in learning about these topics.
+Ethereum Dishes is a reference list of points about various topics related to Blockchain, EVM, and solidity. It is intended to be a helpful resource for those who are interested in learning about these topics.
 
 
 
