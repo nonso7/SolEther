@@ -28,38 +28,34 @@ Normally, the code can't be updated, so smart contract security is about prevent
 ### Gas And Gas Savings Techniques
 
 10. The gas cost of a transaction in Ethereum can be affected by several factors:
-
-   1. The size of the transaction data. Every non-zero byte of data costs 16 gas.
-
-   2. The size and amount of memory covered. Each memory expansion costs 3 gas. Memory is divided into slots ranging from 0x00-0x20 (32 bytes), 0x20-0x40 (another 32 bytes), and so on. If you store a value in memory at offset 0x40 (which goes from 0x40 to 0x60), which is the third slot in memory, you will pay 3 gas * 2 slots (6 gas) for the two memory expansions because you have skipped the first two slots (0x00-0x20 and 0x20-0x40).
-
-   3. The gas cost for the opcodes used in the transaction.
-
-   4. The amount of storage used.
+     1. The size of the transaction data. Every non-zero byte of data costs 16 gas.
+     2. The size and amount of memory covered. Each memory expansion costs 3 gas. Memory is divided into slots ranging from 0x00-0x20 (32 bytes), 0x20-0x40 (another 32 bytes), and so on. If you store a value in memory at offset 0x40 (which goes from 0x40 to 0x60), which is the third slot in memory, you will pay 3 gas * 2 slots (6 gas) for the two memory expansions because you have skipped the first two slots (0x00-0x20 and 0x20-0x40).
+     3. The gas cost for the opcodes used in the transaction.
+     4. The amount of storage used.
 
 11. Payable functions are cheaper than non-payable functions because the EVM uses the ISZERO opcode to check if the CALLVALUE opcode is zero or not during a function in a non-payable function and reverts if value was sent along with it. This adds extra opcodes which are not present in a payable function and thus increases the gas cost.
 
 12. The same principle applies to the unchecked keyword in Solidity, but in the opposite manner. The unchecked keyword removes extra opcodes that the EVM uses to check if the resulting value of an arithmetic plus/minus operation is greater than (for plus) or less than (for minus) any of the factors of the operation.
 
 13. Every transaction (except contract deployment) in Ethereum costs at least 21,000 gas (plus any other execution cost, such as the gas cost of running opcodes if it is a smart contract interaction). This value is imposed by the protocol by default. This is because when a transaction is carried out, it goes through an initial test of intrinsic validity and the following actions are carried out:
-   1. The transaction is well-formed RLP (recursive length prefix) with no additional trailing bytes.
+     1. The transaction is well-formed RLP (recursive length prefix) with no additional trailing bytes.
 
-   2. The transaction signature is valid.
+     2. The transaction signature is valid.
 
-   3. The transaction nonce is valid (equivalent to the sender account's current nonce, to prevent signature replay).
+     3. The transaction nonce is valid (equivalent to the sender account's current nonce, to prevent signature replay).
 
-   4. The sender account has no contract code deployed (see EIP-3607).
+     4. The sender account has no contract code deployed (see EIP-3607).
 
-   5. The gas limit is no smaller than the intrinsic gas used by the transaction.
+     5. The gas limit is no smaller than the intrinsic gas used by the transaction.
 
-   6. The sender account balance contains at least the cost required in up-front payment for the transaction.
-   (All of these can be found on page 8 of the Yellowpaper.)
+     6. The sender account balance contains at least the cost required in up-front payment for the transaction.
+     (All of these can be found on page 8 of the Yellowpaper.)
 
 14. You can access the block base fee from Solidity ^0.8.7 using the block.basefee global variable.
 
 ### EIP-1559 And Gas Fee Types
 15. The transaction fee is calculated by:
-    - max gas fee or gas price * gas used / 1 gwei (1 followed by 9 zeros, which is equal to 1 billion in number)
+     1. max gas fee or gas price * gas used / 1 gwei (1 followed by 9 zeros, which is equal to 1 billion in number)
 
 16. According to EIP-1559, the gas fees go up and down depending on the network condition of the protocol. There are several gas terms you should consider because of EIP-1559:
 
@@ -84,15 +80,15 @@ Normally, the code can't be updated, so smart contract security is about prevent
 ### Storage Arrays And Gas Costs
 24. When an array is written to storage, the following operation occurs: the value of the array, and the length of the array is saved in storage.
 25. When an array is written to storage, the total gas cost of that operation is derived by: 
-   - Gas cost for setting zero to non-zero value of the array (20,000 + 2,100 cold storage access gas = 22,000 gas) 
-   - Gas cost for non-zero to non-zero (2,900 + 2,100 = Gsreset + Gcoldsload cold storage access gas) 
-   - The length of the array is also set on the slot where the dynamic array was declared (so, additional, zero to non-zero length cost 22,100 total gas or non-zero to non-zero length cost 5000 total gas = total gas means with cold access)
+     1. Gas cost for setting zero to non-zero value of the array (20,000 + 2,100 cold storage access gas = 22,000 gas) 
+     2. Gas cost for non-zero to non-zero (2,900 + 2,100 = Gsreset + Gcoldsload cold storage access gas) 
+     3. The length of the array is also set on the slot where the dynamic array was declared (so, additional, zero to non-zero length cost 22,100 total gas or non-zero to non-zero length cost 5000 total gas = total gas means with cold access)
 26. This involves push, pop, or anything that affects the length of the array or its values.
 27. This is why arrays are said to be expensive when dealing with them in storage.
 28. Arrays in storage also follow the same gas cost mechanism as normal storage variables, where: 
-   - Setting the same data in the same storage location cost 100 gas
-   - Updating from non-zero to non-zero value cost 5000 gas
-   - Updating from zero to non-zero cost 20,000 gas for setting and additional 2,100 for cold storage access (first read in transaction)
+     1. Setting the same data in the same storage location cost 100 gas
+     2. Updating from non-zero to non-zero value cost 5000 gas
+     3. Updating from zero to non-zero cost 20,000 gas for setting and additional 2,100 for cold storage access (first read in transaction)
 
 ### Gas Refunds
 29. When a value is set from non-zero to zero, there is a gas refund given by the Ethereum network.
