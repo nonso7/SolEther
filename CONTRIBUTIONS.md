@@ -17,7 +17,7 @@ To contribute, follow these steps:
 ## Style Guide
 Please follow the style and formatting of the existing content when making contributions.
 - Use clear and concise language to explain concepts and ideas.
-- Include examples and code snippets to illustrate your points.
+- Include examples and code snippets if necessary to illustrate your points.
 
 ## Contact
 If you have any questions or would like to discuss your contributions with the maintainers of Ethereum Dishes, please don't hesitate to reach out. You can contact me through the repository's issue tracker or by sending an email to raymondjesse713@gmail.com.
