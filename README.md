@@ -94,7 +94,7 @@ Normally, the code can't be updated, so smart contract security is about prevent
 29. When a value is set from non-zero to zero, there is a gas refund given by the Ethereum network.
 30. This includes going from a true to false, non-zero
 
-### SOLIDITY OPTIMIZER
+### Solidity Optimizer And Its Effect On Gas
 31. The Solidity optimizer, when used, affects the deployed code and gas cost to run the code. 
 32. The number of runs (--optimizer runs) specifies roughly how often each opcode of the deployed code will be executed across the lifetime of the contract. This is a trade-off between code size (larger code size means a larger deployment cost) and code execution (more or fewer opcodes affect execution cost, so it's a trade-off between deployment cost and execution cost).
 33. A "runs" parameter of "1" will be interpreted by the optimizer as the code being called just once after deployment, resulting in shorter code for cheaper deployment but with higher execution cost. 
