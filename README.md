@@ -1,6 +1,6 @@
-# Ethereum Dishes
+# SolEther
 
-Ethereum Dishes is a reference list of points about various topics related to Blockchain, EVM, and solidity. It is intended to be a helpful resource for those who are interested in learning about these topics.
+SolEther is a reference list of points about various topics related to Blockchain, EVM, and solidity. It is intended to be a helpful resource for those who are interested in learning about these topics.
 
 
 
@@ -103,7 +103,7 @@ Normally, the code can't be updated, so smart contract security is about prevent
 
 
 # Contribute
-We welcome contributions to Ethereum Dishes! If you have suggestions for improvements or new points to add, please see our [Contribution](https://github.com/Jesserc/Ethereum-Dishes/blob/main/CONTRIBUTIONS.md) Guidelines for more information.
+We welcome contributions to SolEther! If you have suggestions for improvements or new points to add, please see our [Contribution](https://github.com/Jesserc/Ethereum-Dishes/blob/main/CONTRIBUTIONS.md) Guidelines for more information.
 
-# License
-Ethereum Dishes is licensed under the [MIT](https://github.com/Jesserc/Ethereum-Dishes/tree/main) License.
+# License 
+SolEther is licensed under the [MIT](https://github.com/Jesserc/SolEther/tree/main) License.
